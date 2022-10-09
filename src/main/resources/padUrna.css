@@ -1,0 +1,71 @@
+.padUrna {
+    -fx-background-color: #1B1E23;
+}
+
+.btnNumUrna {
+    -fx-background-color: #181818;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-pref-height: 50;
+    -fx-pref-width: 100;
+}
+
+.btnNumUrna:hover {
+    -fx-background-color: #000000;
+}
+
+.btnNumUrna:pressed {
+    -fx-background-color: #333333;
+}
+
+.btnBrancoUrna {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-pref-height: 50;
+    -fx-pref-width: 100;
+}
+
+.btnBrancoUrna:hover {
+    -fx-background-color: #cbcbcb;
+}
+
+.btnBrancoUrna:pressed {
+    -fx-background-color: #b2b2b2;
+}
+
+.btnCorrigeUrna {
+    -fx-background-color: #d75413;
+    -fx-text-fill: #000000;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-pref-height: 50;
+    -fx-pref-width: 100;
+}
+
+.btnCorrigeUrna:hover {
+    -fx-background-color: #b74208;
+}
+
+.btnCorrigeUrna:pressed {
+    -fx-background-color: #8a3105;
+}
+
+.btnConfirmaUrna {
+    -fx-background-color: #009600;
+    -fx-text-fill: #000000;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-pref-height: 50;
+    -fx-pref-width: 100;
+}
+
+.btnConfirmaUrna:hover {
+    -fx-background-color: #017501;
+}
+
+.btnConfirmaUrna:pressed {
+    -fx-background-color: #005700;
+}
