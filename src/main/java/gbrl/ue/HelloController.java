@@ -1,4 +1,4 @@
-package br.gbrl.projurnaeletronica;
+package gbrl.ue;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
