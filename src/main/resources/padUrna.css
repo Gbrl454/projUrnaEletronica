@@ -2,13 +2,21 @@
     -fx-background-color: #1B1E23;
 }
 
+.padUrnaG {
+    -fx-max-width: 35em;
+    -fx-max-height: 25em;
+}
+
+.btnNumUrna, .btnBrancoUrna, .btnCorrigeUrna, .btnConfirmaUrna {
+    -fx-font-size: 1em;
+    -fx-font-weight: bold;
+    -fx-pref-height: 3em;
+    -fx-pref-width: 7em;
+}
+
 .btnNumUrna {
     -fx-background-color: #181818;
     -fx-text-fill: #ffffff;
-    -fx-font-size: 15;
-    -fx-font-weight: bold;
-    -fx-pref-height: 50;
-    -fx-pref-width: 100;
 }
 
 .btnNumUrna:hover {
@@ -22,10 +30,6 @@
 .btnBrancoUrna {
     -fx-background-color: #ffffff;
     -fx-text-fill: #000000;
-    -fx-font-size: 15;
-    -fx-font-weight: bold;
-    -fx-pref-height: 50;
-    -fx-pref-width: 100;
 }
 
 .btnBrancoUrna:hover {
@@ -39,10 +43,6 @@
 .btnCorrigeUrna {
     -fx-background-color: #d75413;
     -fx-text-fill: #000000;
-    -fx-font-size: 15;
-    -fx-font-weight: bold;
-    -fx-pref-height: 50;
-    -fx-pref-width: 100;
 }
 
 .btnCorrigeUrna:hover {
@@ -56,10 +56,6 @@
 .btnConfirmaUrna {
     -fx-background-color: #009600;
     -fx-text-fill: #000000;
-    -fx-font-size: 15;
-    -fx-font-weight: bold;
-    -fx-pref-height: 50;
-    -fx-pref-width: 100;
 }
 
 .btnConfirmaUrna:hover {
