@@ -19,7 +19,7 @@
          <children>
             <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: cfcfcf;" VBox.vgrow="ALWAYS">
                <center>
-                  <VBox alignment="CENTER_LEFT" prefHeight="620.0" prefWidth="512.0" spacing="15.0" BorderPane.alignment="CENTER_LEFT">
+                  <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0" BorderPane.alignment="CENTER_LEFT">
                      <BorderPane.margin>
                         <Insets />
                      </BorderPane.margin>

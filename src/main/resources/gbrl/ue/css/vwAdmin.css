@@ -1,0 +1,43 @@
+*.tab-header-area *.tab-header-background {
+    -fx-background-color: #1B1E23;
+}
+
+*.tab-label {
+    -fx-font-size: 1.5em;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+*.tab {
+    -fx-padding: 1em;
+    -fx-background-color: transparent;
+}
+
+*.tab:selected {
+    -fx-background-color: #cfccb9;
+}
+
+.btn {
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bold;
+    -fx-pref-height: 2em;
+    -fx-pref-width: 7em;
+    -fx-background-color: #181818;
+    -fx-text-fill: #ffffff;
+}
+
+.btn:hover {
+    -fx-background-color: #000000;
+}
+
+.btn:pressed {
+    -fx-background-color: #333333;
+}
+
+.pesquisa {
+    -fx-font-size: 1em;
+    -fx-font-weight: bold;
+    -fx-pref-height: 3em;
+    -fx-background-color: #333333;
+    -fx-text-fill: #ffffff;
+}

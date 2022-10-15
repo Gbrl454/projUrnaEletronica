@@ -1,6 +1,6 @@
 package gbrl.ue.controllers;
 
-import gbrl.ue.Main;
+import gbrl.ue.App;
 import gbrl.ue.database.dao.PessoaDAO;
 import gbrl.ue.database.dto.PessoaDTO;
 import javafx.collections.FXCollections;
@@ -19,7 +19,7 @@ public class ControllerAdmin extends PessoaDAO {
 
     @FXML
     protected void initialize () {
-        Main.addOnChegeScreenListener((newScreen, userData) -> {
+        App.addOnChegeScreenListener((newScreen, userData) -> {
             //Acontecer quando trocar de tela
             carregarListaPessoas();
         });
@@ -28,7 +28,7 @@ public class ControllerAdmin extends PessoaDAO {
 
     // CADASTRAR PESSOAS
     public void btnCadastrarPessoas () {
-        Main.changeScreen("scCadastrarPessoa");
+        App.changeScreen("scCadastrarPessoa");
     }
 
     // PESQUISAR PESSOAS

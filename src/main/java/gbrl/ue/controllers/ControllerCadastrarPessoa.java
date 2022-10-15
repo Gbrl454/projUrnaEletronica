@@ -1,7 +1,7 @@
 package gbrl.ue.controllers;
 
 import gbrl.ue.DadosVariaveis;
-import gbrl.ue.Main;
+import gbrl.ue.App;
 import gbrl.ue.database.dao.PessoaDAO;
 import gbrl.ue.database.dto.PessoaDTO;
 import javafx.fxml.FXML;
@@ -24,7 +24,7 @@ public class ControllerCadastrarPessoa extends PessoaDAO implements DadosVariave
 
     @FXML
     protected void initialize () {
-        Main.addOnChegeScreenListener((newScreen, userData) -> {
+        App.addOnChegeScreenListener((newScreen, userData) -> {
             //Acontecer quando trocar de tela
             limpar();
         });
@@ -52,7 +52,7 @@ public class ControllerCadastrarPessoa extends PessoaDAO implements DadosVariave
     public void btnCadastrar () {
         if (cadastrar()) {
             alertInformCadastrado(tfNome.getText());
-            Main.changeScreen("scAdmin");
+            App.changeScreen("scAdmin");
         } else {
             Alert aE = new Alert(AlertType.ERROR);
             aE.setTitle("");
@@ -123,6 +123,6 @@ public class ControllerCadastrarPessoa extends PessoaDAO implements DadosVariave
 
     public void btnVoltar () {
         limpar();
-        Main.changeScreen("scAdmin");
+        App.changeScreen("scAdmin");
     }
 }

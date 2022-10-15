@@ -1,6 +1,6 @@
 package gbrl.ue.controllers;
 
-import gbrl.ue.Main;
+import gbrl.ue.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 public class ControllerVwUrnaEletronica {
     @FXML
     protected void initialize() {
-        Main.addOnChegeScreenListener((newScreen, userData) -> {
+        App.addOnChegeScreenListener((newScreen, userData) -> {
             //Acontecer quando trocar de tela
         });
     }
