@@ -4,7 +4,6 @@ import gbrl.ue.DadosVariaveis;
 import gbrl.ue.Main;
 import gbrl.ue.database.dao.PessoaDAO;
 import gbrl.ue.database.dto.PessoaDTO;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -12,11 +11,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+import java.util.Objects;
+
 public class ControllerCadastrarPessoa extends PessoaDAO implements DadosVariaveis {
+    private final String cbEmptyP = "--- Selecione ---";
+    private final String cbEmptyV = "";
+
     public TextField tfNome, tfNomeMae, tfNomePai, tfRG, tfCPF, tfTituloEleitor;
-    public ComboBox<String> cbEstatoCivil;
-    public ComboBox<String> cbNaturalidade;
-    public Button btnCadastrar;
+    public ComboBox<String> cbEstatoCivil, cbNaturalidade;
+    public Button btnCadastrar, btnVoltar;
     boolean isNomeInput, isNomeMaeInput, isNomePaiInput, isRGInput, isCPFInput, isTituloEleitorInput;
 
     @FXML
@@ -36,8 +39,8 @@ public class ControllerCadastrarPessoa extends PessoaDAO implements DadosVariave
         tfRG.clear();
         tfCPF.clear();
         tfTituloEleitor.clear();
-        cbEstatoCivil.setValue("--- Selecione ---");
-        cbNaturalidade.setValue("--- Selecione ---");
+        cbEstatoCivil.setValue(cbEmptyP);
+        cbNaturalidade.setValue(cbEmptyP);
         isNomeInput = false;
         isNomeMaeInput = false;
         isNomePaiInput = false;
@@ -46,7 +49,7 @@ public class ControllerCadastrarPessoa extends PessoaDAO implements DadosVariave
         isTituloEleitorInput = false;
     }
 
-    public void btnCadastrar (ActionEvent actionEvent) {
+    public void btnCadastrar () {
         if (cadastrar()) {
             alertInformCadastrado(tfNome.getText());
             Main.changeScreen("scAdmin");
@@ -85,8 +88,8 @@ public class ControllerCadastrarPessoa extends PessoaDAO implements DadosVariave
             String nome = tfNome.getText();
             String nomeMae = tfNomeMae.getText();
             String nomePai = tfNomePai.getText();
-            String estatoCivil = cbEstatoCivil.getId();
-            String naturalidade = cbNaturalidade.getId();
+            String estatoCivil, naturalidade;
+
             long numRG = 0, numCPF = 0, numTituloEleitor = 0;
 
             if (isRGInput) {
@@ -99,10 +102,27 @@ public class ControllerCadastrarPessoa extends PessoaDAO implements DadosVariave
                 numTituloEleitor = Long.parseLong(tfTituloEleitor.getText());
             }
 
+            if (!Objects.equals(cbEstatoCivil.getValue(), cbEmptyP)) {
+                estatoCivil = cbEstatoCivil.getValue();
+            } else {
+                estatoCivil = cbEmptyV;
+            }
+
+            if (!Objects.equals(cbNaturalidade.getValue(), cbEmptyP)) {
+                naturalidade = cbNaturalidade.getValue();
+            } else {
+                naturalidade = cbEmptyV;
+            }
+
             PessoaDTO pessoa = new PessoaDTO(nome, nomeMae, nomePai, estatoCivil, naturalidade, numRG, numCPF, numTituloEleitor);
             return addPessoa(pessoa);
         } else {
             return false;
         }
+    }
+
+    public void btnVoltar () {
+        limpar();
+        Main.changeScreen("scAdmin");
     }
 }

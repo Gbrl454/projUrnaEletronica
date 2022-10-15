@@ -60,7 +60,17 @@ public class PessoaDAO implements InfoDB {
             resSet = pStm.executeQuery();
 
             while (resSet.next()) {
-                PessoaDTO pessoaDTO = new PessoaDTO(resSet.getInt("id"), resSet.getString("nome"), resSet.getString("nomeMae"), resSet.getString("nomePai"), resSet.getString("estatoCivil"), resSet.getString("naturalidade"), resSet.getLong("numRG"), resSet.getLong("numCPF"), resSet.getLong("numTituloEleitor"));
+                PessoaDTO pessoaDTO = new PessoaDTO(
+                        resSet.getInt("id"),
+                        resSet.getString("nome"),
+                        resSet.getString("nomeMae"),
+                        resSet.getString("nomePai"),
+                        resSet.getString("estatoCivil"),
+                        resSet.getString("naturalidade"),
+                        resSet.getLong("numRG"),
+                        resSet.getLong("numCPF"),
+                        resSet.getLong("numTituloEleitor"));
+                
                 list.add(pessoaDTO);
             }
 

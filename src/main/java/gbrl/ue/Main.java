@@ -15,7 +15,7 @@ public class Main extends Application {
     private static Scene scCadastrarPessoa;
     private static Scene scUrnaEletronica;
 
-    public static void changeScreen(String scene, Object userData) {
+    public static void changeScreen (String scene, Object userData) {
         switch (scene) {
             case "scAdmin" -> {
                 stage.setScene(scAdmin);
@@ -33,30 +33,30 @@ public class Main extends Application {
         }
     }
 
-    public static void changeScreen(String scene) {
+    public static void changeScreen (String scene) {
         changeScreen(scene, null);
     }
 
-    public static void main(String[] args) {
+    public static void main (String[] args) {
         launch();
     }
 
-    public static void addOnChegeScreenListener(OnChangeScreen newListener) {
+    public static void addOnChegeScreenListener (OnChangeScreen newListener) {
         listeners.add(newListener);
     }
 
-    private static void notfifyListeners(String newScreen, Object userData) {
+    private static void notfifyListeners (String newScreen, Object userData) {
         for (OnChangeScreen l : listeners) {
             l.onScreenChanged(newScreen, userData);
         }
     }
 
     @Override
-    public void start(Stage stageS) throws IOException {
+    public void start (Stage stageS) throws IOException {
         stage = stageS;
 
-        int H = 16 * 64;
-        int W = 9 * 64;
+        int H = 17 * 64;
+        int W = 10 * 64;
 
         stageS.resizableProperty().setValue(Boolean.FALSE);
 
@@ -75,6 +75,6 @@ public class Main extends Application {
     }
 
     public interface OnChangeScreen {
-        void onScreenChanged(String newScreen, Object userData);
+        void onScreenChanged (String newScreen, Object userData);
     }
 }

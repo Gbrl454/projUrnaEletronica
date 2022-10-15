@@ -1,0 +1,24 @@
+.btn {
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+    -fx-pref-height: 2.5em;
+    -fx-pref-width: 10em;
+    -fx-background-color: #181818;
+    -fx-text-fill: #ffffff;
+}
+
+.btn:hover {
+    -fx-background-color: #000000;
+}
+
+.btn:pressed {
+    -fx-background-color: #333333;
+}
+
+.cb {
+    -fx-background-color: #646363;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-prompt-text-fill: #ffffff;
+    -fx-pref-width: 15em;
+}
