@@ -1,20 +1,21 @@
 package gbrl.ue.controllers;
 
+import gbrl.ue.DadosVariaveis;
 import gbrl.ue.Main;
 import gbrl.ue.database.dao.PessoaDAO;
 import gbrl.ue.database.dto.PessoaDTO;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
-public class ControllerCadastrarPessoa extends PessoaDAO {
+public class ControllerCadastrarPessoa extends PessoaDAO implements DadosVariaveis {
     public TextField tfNome, tfNomeMae, tfNomePai, tfRG, tfCPF, tfTituloEleitor;
-    public ComboBox cbEstatoCivil, cbNaturalidade;
+    public ComboBox<String> cbEstatoCivil;
+    public ComboBox<String> cbNaturalidade;
     public Button btnCadastrar;
     boolean isNomeInput, isNomeMaeInput, isNomePaiInput, isRGInput, isCPFInput, isTituloEleitorInput;
 
@@ -24,6 +25,8 @@ public class ControllerCadastrarPessoa extends PessoaDAO {
             //Acontecer quando trocar de tela
             limpar();
         });
+        cbEstatoCivil.getItems().addAll(getListEstatoCivil());
+        cbNaturalidade.getItems().addAll(getListNaturalidade());
     }
 
     private void limpar () {
@@ -47,6 +50,12 @@ public class ControllerCadastrarPessoa extends PessoaDAO {
         if (cadastrar()) {
             alertInformCadastrado(tfNome.getText());
             Main.changeScreen("scAdmin");
+        } else {
+            Alert aE = new Alert(AlertType.ERROR);
+            aE.setTitle("");
+            aE.setHeaderText("");
+            aE.setContentText("Preencha seus dados");
+            aE.show();
         }
     }
 

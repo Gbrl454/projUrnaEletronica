@@ -21,6 +21,7 @@ public class ControllerAdmin extends PessoaDAO {
     protected void initialize () {
         Main.addOnChegeScreenListener((newScreen, userData) -> {
             //Acontecer quando trocar de tela
+            carregarListaPessoas();
         });
         carregarListaPessoas();
     }
@@ -40,16 +41,15 @@ public class ControllerAdmin extends PessoaDAO {
     }
 
     public void pesquisarPessoas () {
-//        if (!tfPesquisarPessoas.getText().isEmpty()) {
-//            String sh = tfPesquisarPessoas.getText();
-//        }
         carregarListaPessoas();
     }
 
     public void btnPesquisarPessoas () {
         pesquisarPessoas();
-        if (pessoaShr.isEmpty()) {
-            alertError("Pesquisa", null, "Pessoa pesuisada não encontrada");
+        if (!tfPesquisarPessoas.getText().isEmpty()) {
+            if (pessoaShr.isEmpty()) {
+                alertError("Pesquisa", null, "Pessoa pesquisada não encontrada");
+            }
         }
     }
 
@@ -58,7 +58,7 @@ public class ControllerAdmin extends PessoaDAO {
         if (shrPessoa(tfPesquisarPessoas.getText()).isEmpty()) {
             obsPessoa = FXCollections.observableArrayList(listPessoas());
         } else {
-            obsPessoa = FXCollections.observableArrayList(shrPessoa(tfPesquisarPessoas.getText()));
+            obsPessoa = FXCollections.observableArrayList(shrPessoa(tfPesquisarPessoas.getText().toLowerCase()));
         }
         lvPessoas.setItems(obsPessoa);
     }

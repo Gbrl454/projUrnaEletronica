@@ -1,11 +1,20 @@
 package gbrl.ue.controllers;
 
+import gbrl.ue.Main;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class ControllerVwUrnaEletronica {
+    @FXML
+    protected void initialize() {
+        Main.addOnChegeScreenListener((newScreen, userData) -> {
+            //Acontecer quando trocar de tela
+        });
+    }
+
     private final int nCargo = 5;
     public Button btnBranco, btnCorrige, btnConfirma, btnNum0, btnNum1, btnNum2, btnNum3, btnNum4, btnNum5, btnNum6, btnNum7, btnNum8, btnNum9;
     public Text nVot1, nVot2, nVot3, nVot4, nVot5;

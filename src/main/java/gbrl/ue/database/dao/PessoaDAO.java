@@ -51,7 +51,7 @@ public class PessoaDAO implements InfoDB {
     public ArrayList<PessoaDTO> listPessoas () {
         list = new ArrayList<>();
 
-        String sql = "SELECT * from " + PESSOAStb;
+        String sql = "SELECT * from " + PESSOAStb + " ORDER BY id ASC";
 
         conn = new ConexaoDAO().conDB();
 
@@ -74,23 +74,24 @@ public class PessoaDAO implements InfoDB {
     // Pesquisar
     public AbstractCollection<PessoaDTO> shrPessoa (String sh) {
         pessoaShr = new HashSet<>();
-if (sh.isEmpty()){
-    return listPessoas();
-}else {
-    for (PessoaDTO pessoa : listPessoas()) {
-            if (pessoa.getNome().contains(sh)
-                    || pessoa.getNomeMae().contains(sh)
-                    || pessoa.getNomePai().contains(sh)
-                    || pessoa.getEstatoCivil().contains(sh)
-                    || pessoa.getNaturalidade().contains(sh)
-                    || String.valueOf(pessoa.getId()).contains(sh)
-                    || String.valueOf(pessoa.getNumRG()).contains(sh)
-                    || String.valueOf(pessoa.getNumCPF()).contains(sh)
-                    || String.valueOf(pessoa.getNumTituloEleitor()).contains(sh)) {
-                pessoaShr.add(pessoa);
+        sh = sh.toLowerCase();
+        if (sh.isEmpty()) {
+            return listPessoas();
+        } else {
+            for (PessoaDTO pessoa : listPessoas()) {
+                if (pessoa.getNome().toLowerCase().contains(sh)
+                        || pessoa.getNomeMae().toLowerCase().contains(sh)
+                        || pessoa.getNomePai().toLowerCase().contains(sh)
+                        || pessoa.getEstatoCivil().toLowerCase().contains(sh)
+                        || pessoa.getNaturalidade().toLowerCase().contains(sh)
+                        || String.valueOf(pessoa.getId()).contains(sh)
+                        || String.valueOf(pessoa.getNumRG()).contains(sh)
+                        || String.valueOf(pessoa.getNumCPF()).contains(sh)
+                        || String.valueOf(pessoa.getNumTituloEleitor()).contains(sh)) {
+                    pessoaShr.add(pessoa);
+                }
             }
-    }
-}
+        }
         return pessoaShr;
     }
 }
