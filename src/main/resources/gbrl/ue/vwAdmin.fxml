@@ -29,25 +29,25 @@
             <Button fx:id="btnCadastrarPessoas" ellipsisString="" maxHeight="-Infinity" maxWidth="250.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnCadastrarPessoas" styleClass="btn" text="Cadastrar Pessoa" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
         </VBox>
     </Tab>
-    <Tab text="Partidos">
-        <content>
-          <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
-              <children>
-                  <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
-                      <children>
-                          <TextField promptText="Partido..." styleClass="pesquisa" HBox.hgrow="ALWAYS" />
-                          <Button mnemonicParsing="false" styleClass="btn" text="Pesquisar" />
-                      </children>
-                  </HBox>
-                  <ListView focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS" />
-                  <Button ellipsisString="" mnemonicParsing="false" styleClass="btn" text="Cadastrar" textAlignment="CENTER" />
-              </children>
-              <padding>
-                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-              </padding>
-          </VBox>
-        </content>
-    </Tab>
+   <Tab text="Partidos">
+      <content>
+         <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
+            <padding>
+               <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+            <children>
+               <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
+                  <children>
+                     <TextField fx:id="tfPesquisarPartidos" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#pesquisarPartidos" promptText="Partido..." styleClass="pesquisa" HBox.hgrow="SOMETIMES" />
+                     <Button fx:id="btnPesquisarPartidos" mnemonicParsing="false" onAction="#btnPesquisarPartidos" styleClass="btn" text="Pesquisar" />
+                  </children>
+               </HBox>
+               <ListView fx:id="lvPartidos" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#slcOpcLvPartidos" VBox.vgrow="ALWAYS" />
+               <Button fx:id="btnCadastrarPartidos" ellipsisString="" maxHeight="-Infinity" maxWidth="250.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnCadastrarPartidos" styleClass="btn" text="Cadastrar Pessoa" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
+            </children>
+         </VBox>
+      </content>
+   </Tab>
     <Tab text="Candidatos">
         <content>
           <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">

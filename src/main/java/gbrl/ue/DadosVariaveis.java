@@ -3,6 +3,10 @@ package gbrl.ue;
 import java.util.ArrayList;
 
 public interface DadosVariaveis {
+
+    String USER_ADMIN = "AdminJus";
+    String SENHA_ADMIN = "159357";
+
     default ArrayList<String> getListEstatoCivil () {
         ArrayList<String> list = new ArrayList<>();
         list.add("Solteiro (a)");

@@ -14,14 +14,14 @@ import java.util.HashSet;
 
 public class PessoaDAO implements InfoDB {
 
-    public HashSet<PessoaDTO> pessoaShr;
-    ArrayList<PessoaDTO> list;
-    Connection conn = null;
-    PreparedStatement pStm = null;
-    ResultSet resSet = null;
+    public static HashSet<PessoaDTO> pessoaShr;
+    static ArrayList<PessoaDTO> list;
+    static Connection conn = null;
+    static PreparedStatement pStm = null;
+    static ResultSet resSet = null;
 
     // Cadastrar
-    public boolean addPessoa (PessoaDTO pessoa) {
+    public static boolean addPessoa (PessoaDTO pessoa) {
         String sql = "INSERT INTO " + PESSOAStb + " values(default,?,?,?,?,?,?,?,?)";
 
         conn = new ConexaoDAO().conDB();
@@ -48,7 +48,7 @@ public class PessoaDAO implements InfoDB {
     }
 
     // Listar
-    public ArrayList<PessoaDTO> listPessoas () {
+    public static ArrayList<PessoaDTO> listPessoas () {
         list = new ArrayList<>();
 
         String sql = "SELECT * from " + PESSOAStb + " ORDER BY id ASC";
@@ -70,7 +70,7 @@ public class PessoaDAO implements InfoDB {
                         resSet.getLong("numRG"),
                         resSet.getLong("numCPF"),
                         resSet.getLong("numTituloEleitor"));
-                
+
                 list.add(pessoaDTO);
             }
 
@@ -82,7 +82,7 @@ public class PessoaDAO implements InfoDB {
     }
 
     // Pesquisar
-    public AbstractCollection<PessoaDTO> shrPessoa (String sh) {
+    public static AbstractCollection<PessoaDTO> shrPessoa (String sh) {
         pessoaShr = new HashSet<>();
         sh = sh.toLowerCase();
         if (sh.isEmpty()) {
@@ -94,7 +94,6 @@ public class PessoaDAO implements InfoDB {
                         || pessoa.getNomePai().toLowerCase().contains(sh)
                         || pessoa.getEstatoCivil().toLowerCase().contains(sh)
                         || pessoa.getNaturalidade().toLowerCase().contains(sh)
-                        || String.valueOf(pessoa.getId()).contains(sh)
                         || String.valueOf(pessoa.getNumRG()).contains(sh)
                         || String.valueOf(pessoa.getNumCPF()).contains(sh)
                         || String.valueOf(pessoa.getNumTituloEleitor()).contains(sh)) {
@@ -104,5 +103,8 @@ public class PessoaDAO implements InfoDB {
         }
         return pessoaShr;
     }
+
+    // Autentificar
+
 }
 

@@ -11,7 +11,7 @@ public interface InfoDB {
     String urlBD = "jdbc:mysql://" + IP + "/" + BANCO + "?autoReconnect=true&useSSL=false&user=" + USER + "&password=" + SENHA;
 
     String PESSOAStb = "pessoas";
-    String PARTIDOStb = "";
+    String PARTIDOStb = "partidos";
     String CANDIDATOStb = "";
 
 

@@ -1,15 +1,19 @@
 package gbrl.ue.database.dto;
 
 public class PessoaDTO {
-    private final long numTituloEleitor;
-    private int id;
-    private final String nome;
-    private final String nomeMae;
-    private final String nomePai;
-    private final String estatoCivil;
-    private final String naturalidade;
-    private final long numRG;
     private final long numCPF;
+    private long numTituloEleitor;
+    private String nome;
+    private String nomeMae;
+    private String nomePai;
+    private String estatoCivil;
+    private String naturalidade;
+    private long numRG;
+    private int id;
+
+    public PessoaDTO (long numCPF) {
+        this.numCPF = numCPF;
+    }
 
     public PessoaDTO (int id, String nome, String nomeMae, String nomePai, String estatoCivil, String naturalidade, long numRG, long numCPF, long numTituloEleitor) {
         this.id = id;

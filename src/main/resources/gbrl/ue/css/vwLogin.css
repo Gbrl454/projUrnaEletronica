@@ -1,0 +1,26 @@
+.btnRecuperar {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+}
+
+.btnRecuperar:hover {
+    -fx-text-fill: #cbcbcb;
+}
+
+.btnRecuperar:pressed {
+    -fx-text-fill: #b2b2b2;
+}
+
+.btn {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-pref-width: 10em;
+}
+
+.btn:hover {
+    -fx-background-color: #cbcbcb;
+}
+
+.btn:pressed {
+    -fx-background-color: #b2b2b2;
+}

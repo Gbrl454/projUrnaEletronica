@@ -11,12 +11,14 @@ import java.util.ArrayList;
 public class App extends Application {
     private static final ArrayList<OnChangeScreen> listeners = new ArrayList<>();
     private static Stage stage;
-    private static Scene scAdmin;
-    private static Scene scCadastrarPessoa;
-    private static Scene scUrnaEletronica;
+    private static Scene scLogin, scAdmin, scCadastrarPessoa, scUrnaEletronica;
 
     public static void changeScreen (String scene, Object userData) {
         switch (scene) {
+            case "scLogin" -> {
+                stage.setScene(scLogin);
+                notfifyListeners("scLogin", userData);
+            }
             case "scAdmin" -> {
                 stage.setScene(scAdmin);
                 notfifyListeners("scAdmin", userData);
@@ -60,6 +62,9 @@ public class App extends Application {
 
         stageS.resizableProperty().setValue(Boolean.FALSE);
 
+        FXMLLoader fxmlLogin = new FXMLLoader(App.class.getResource("vwLogin.fxml"));
+        scLogin = new Scene(fxmlLogin.load(), H, W);
+
         FXMLLoader fxmlAdmin = new FXMLLoader(App.class.getResource("vwAdmin.fxml"));
         scAdmin = new Scene(fxmlAdmin.load(), H, W);
 
@@ -70,7 +75,7 @@ public class App extends Application {
         scUrnaEletronica = new Scene(fxmlUrnaEletronica.load(), H, W);
 
         stageS.setTitle("Justiça Eleitoral");
-        stageS.setScene(scAdmin);
+        stageS.setScene(scLogin);
         stageS.show();
     }
 
