@@ -2,6 +2,7 @@ package gbrl.ue.controllers;
 
 import gbrl.ue.App;
 import gbrl.ue.DadosVariaveis;
+import gbrl.ue.database.InfoDB;
 import gbrl.ue.database.dao.PessoaDAO;
 import gbrl.ue.database.dto.PessoaDTO;
 import javafx.fxml.FXML;

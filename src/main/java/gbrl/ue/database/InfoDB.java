@@ -12,8 +12,6 @@ public interface InfoDB {
 
     String PESSOAStb = "pessoas";
     String PARTIDOStb = "partidos";
-    String CANDIDATOStb = "";
-
-
+    String CANDIDATOStb = "candidatos";
 
 }

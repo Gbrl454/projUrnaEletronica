@@ -7,7 +7,6 @@ import gbrl.ue.database.dto.PartidoDTO;
 import gbrl.ue.database.dto.PessoaDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -15,8 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class ControllerAdmin{
-        public TextField tfPesquisarPessoas;
+public class ControllerAdmin {
+    public TextField tfPesquisarPessoas;
     public Button btnPesquisarPessoas, btnCadastrarPessoas;
     public ListView<PessoaDTO> lvPessoas;
 
@@ -44,7 +43,7 @@ public class ControllerAdmin{
 
     // CADASTRAR PESSOAS
     public void btnCadastrarPessoas () {
-        App.changeScreen("scCadastrarPessoa","scAdmin");
+        App.changeScreen("scCadastrarPessoa", "scAdmin");
     }
 
     // PESQUISAR PESSOAS

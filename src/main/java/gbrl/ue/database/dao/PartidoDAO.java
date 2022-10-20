@@ -12,13 +12,13 @@ import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class PartidoDAO implements InfoDB{
+public class PartidoDAO implements InfoDB {
 
-    public  static     HashSet<PartidoDTO> partidoShr;
-    static  ArrayList<PartidoDTO> list;
+    public static HashSet<PartidoDTO> partidoShr;
+    static ArrayList<PartidoDTO> list;
     static Connection conn = null;
-    static   PreparedStatement pStm = null;
-    static   ResultSet resSet = null;
+    static PreparedStatement pStm = null;
+    static ResultSet resSet = null;
 
     // Cadastrar
     public static boolean addPartido (PartidoDTO partido) {
