@@ -36,3 +36,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Arquivos ###
+/src/main/java/gbrl/ue/database/InfoDB.java
