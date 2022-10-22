@@ -42,7 +42,7 @@ public class PessoaDAO implements InfoDB {
             System.out.println(e.getMessage());
         }
 
-        return pessoas.size() == 0;
+        return !(pessoas.size() == 0);
     }
 
     public static boolean addPessoa (PessoaDTO pessoa) {

@@ -16,10 +16,10 @@ import java.util.Objects;
 public class ControllerCadastrarPessoa implements DadosVariaveis {
     private final String cbEmptyP = "--- Selecione ---";
     private final String cbEmptyV = "";
-    public TextField tfNome, tfNomeMae, tfNomePai, tfRG, tfCPF, tfTituloEleitor;
+    public TextField tfNome, tfNomeMae, tfNomePai, tfRG, tfCPF, tfTituloEleitor, tfSenha, tfSenhaConf;
     public ComboBox<String> cbEstatoCivil, cbNaturalidade;
     public Button btnCadastrar, btnVoltar;
-    boolean isNomeInput, isNomeMaeInput, isNomePaiInput, isRGInput, isCPFInput, isTituloEleitorInput;
+    boolean isNomeInput, isNomeMaeInput, isNomePaiInput, isRGInput, isCPFInput, isTituloEleitorInput, isSenhaInput, isSenha;
     private String antePag = "";
 
     @FXML
@@ -40,6 +40,8 @@ public class ControllerCadastrarPessoa implements DadosVariaveis {
         tfRG.clear();
         tfCPF.clear();
         tfTituloEleitor.clear();
+        tfSenha.clear();
+        tfSenhaConf.clear();
         cbEstatoCivil.setValue(cbEmptyP);
         cbNaturalidade.setValue(cbEmptyP);
         isNomeInput = false;
@@ -48,6 +50,8 @@ public class ControllerCadastrarPessoa implements DadosVariaveis {
         isRGInput = false;
         isCPFInput = false;
         isTituloEleitorInput = false;
+        isSenhaInput = false;
+        isSenha = false;
     }
 
     private void alert (String title, String header, String text, AlertType alertType) {
@@ -74,13 +78,20 @@ public class ControllerCadastrarPessoa implements DadosVariaveis {
         isRGInput = !tfRG.getText().isEmpty();
         isCPFInput = !tfCPF.getText().isEmpty();
         isTituloEleitorInput = !tfTituloEleitor.getText().isEmpty();
+        isSenhaInput = !tfSenha.getText().isEmpty();
+        isSenha = tfSenha.getText().equals(tfSenhaConf.getText());
 
         // System.out.println("Nome - " + isNomeInput + "\n" + "NomeMae - " + isNomeMaeInput + "\n" + "NomePai - " + isNomePaiInput + "\n" + "RG - " + isRGInput + "\n" + "CPF - " + isCPFInput + "\n" + "TituloEleitor - " + isTituloEleitorInput);
 
-        return isNomeInput && isCPFInput;
+        return isNomeInput && isCPFInput && !PessoaDAO.cpfCadastrado(tfCPF.getText());
     }
 
     private boolean cadastrar () {
+        if (!tfSenha.getText().equals(tfSenhaConf.getText())){
+            alert("Senhas diferentes","","As senhas devem ser iguais",AlertType.ERROR);
+            tfSenhaConf.clear();
+            return false;
+        }else{
         if (isCadastravel()) {
             String nome = tfNome.getText();
             String nomeMae = tfNomeMae.getText();
@@ -88,6 +99,7 @@ public class ControllerCadastrarPessoa implements DadosVariaveis {
             String numRG = tfRG.getText();
             String numCPF = tfCPF.getText();
             String numTituloEleitor = tfTituloEleitor.getText();
+            String senha = tfSenha.getText();
             String estatoCivil, naturalidade;
 
             if (!Objects.equals(cbEstatoCivil.getValue(), cbEmptyP)) {
@@ -102,11 +114,11 @@ public class ControllerCadastrarPessoa implements DadosVariaveis {
                 naturalidade = cbEmptyV;
             }
 
-            PessoaDTO pessoa = new PessoaDTO(nome, nomeMae, nomePai, estatoCivil, naturalidade, numRG, numCPF, numTituloEleitor);
-            return PessoaDAO.addPessoa(pessoa);
+            PessoaDTO pessoa = new PessoaDTO(nome,nomeMae,nomePai,estatoCivil, naturalidade, numTituloEleitor, numRG, numCPF, senha);
+                return PessoaDAO.addPessoa(pessoa);
         } else {
             return false;
-        }
+        }}
     }
 
     public void btnVoltar () {

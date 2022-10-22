@@ -20,7 +20,7 @@
                     <Font size="25.0" />
                 </font>
             </Label>
-            <TextField fx:id="tfNome" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#isCadastravel" promptText="Ex.: Augusto de Carvalho Rodrigues dos Anjos">
+            <TextField fx:id="tfNome" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Ex.: Augusto de Carvalho Rodrigues dos Anjos">
                 <font>
                     <Font size="25.0" />
                 </font>
@@ -48,7 +48,7 @@
                         <Font size="25.0" />
                     </font>
                 </Label>
-                <TextField fx:id="tfNomeMae" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#isCadastravel" promptText="Ex.: Elza Gomes da Conceição">
+                <TextField fx:id="tfNomeMae" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Ex.: Elza Gomes da Conceição">
                     <font>
                         <Font size="25.0" />
                     </font>
@@ -63,7 +63,7 @@
                         <Font size="25.0" />
                     </font>
                 </Label>
-                <TextField fx:id="tfNomePai" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#isCadastravel" promptText="Ex.: Pedro Paulo Soares Pereira">
+                <TextField fx:id="tfNomePai" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Ex.: Pedro Paulo Soares Pereira">
                     <font>
                         <Font size="25.0" />
                     </font>
@@ -78,7 +78,7 @@
                         <Font size="25.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="cbEstatoCivil" maxHeight="1.7976931348623157E308" maxWidth="500.0" minHeight="-Infinity" minWidth="200.0" onKeyPressed="#isCadastravel" onMouseClicked="#isCadastravel" promptText="-- Selecione --" styleClass="cb" visibleRowCount="9" />
+                <ComboBox fx:id="cbEstatoCivil" maxHeight="1.7976931348623157E308" maxWidth="500.0" minHeight="-Infinity" minWidth="200.0" promptText="-- Selecione --" styleClass="cb" visibleRowCount="9" />
             </HBox>
             <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                 <GridPane.margin>
@@ -89,7 +89,7 @@
                         <Font size="25.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="cbNaturalidade" maxHeight="1.7976931348623157E308" maxWidth="500.0" minHeight="-Infinity" minWidth="200.0" onKeyPressed="#isCadastravel" onMouseClicked="#isCadastravel" promptText="-- Selecione --" styleClass="cb" visibleRowCount="9" />
+                <ComboBox fx:id="cbNaturalidade" maxHeight="1.7976931348623157E308" maxWidth="500.0" minHeight="-Infinity" minWidth="200.0" promptText="-- Selecione --" styleClass="cb" visibleRowCount="9" />
             </HBox>
             <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                 <GridPane.margin>
@@ -100,7 +100,7 @@
                         <Font size="25.0" />
                     </font>
                 </Label>
-                <TextField fx:id="tfRG" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#isCadastravel" promptText="Ex.: 0000000000-0" HBox.hgrow="ALWAYS">
+                <TextField fx:id="tfRG" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Ex.: 0000000000-0" HBox.hgrow="ALWAYS">
                     <font>
                         <Font size="25.0" />
                     </font>
@@ -115,7 +115,7 @@
                         <Font size="25.0" />
                     </font>
                 </Label>
-                <TextField fx:id="tfCPF" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#isCadastravel" promptText="Ex.: 000.000.000-00" HBox.hgrow="ALWAYS">
+                <TextField fx:id="tfCPF" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Ex.: 000.000.000-00" HBox.hgrow="ALWAYS">
                     <font>
                         <Font size="25.0" />
                     </font>
@@ -128,12 +128,44 @@
                     <Font size="25.0" />
                 </font>
             </Label>
-            <TextField fx:id="tfTituloEleitor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#isCadastravel" promptText="Ex.: 0000 0000 0000">
+            <TextField fx:id="tfTituloEleitor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Ex.: 0000 0000 0000">
                 <font>
                     <Font size="25.0" />
                 </font>
             </TextField>
         </VBox>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
+               <children>
+                  <Label text="Senha">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfSenha" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Ex.: 123abc" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
+               <children>
+                  <Label text="Confirmar Senha">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfSenhaConf" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Ex.: 123abc" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
         <VBox.margin>
             <Insets />
         </VBox.margin>

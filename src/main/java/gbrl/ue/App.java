@@ -57,8 +57,8 @@ public class App extends Application {
     public void start (Stage stageS) throws IOException {
         stage = stageS;
 
-        int H = 17 * 64;
-        int W = 10 * 64;
+        int H = 18 * 64;
+        int W = 11 * 64;
 
         stageS.resizableProperty().setValue(Boolean.FALSE);
 
