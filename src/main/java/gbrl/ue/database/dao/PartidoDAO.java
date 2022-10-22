@@ -12,7 +12,7 @@ import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class PartidoDAO implements InfoDB {
+public class PartidoDAO implements InfoDB  {
 
     public static HashSet<PartidoDTO> partidoShr;
     static ArrayList<PartidoDTO> list;
