@@ -7,31 +7,39 @@ public class PessoaDTO {
     private String nomePai;
     private String estatoCivil;
     private String naturalidade;
-    private String numCPF;
     private String numTituloEleitor;
     private String numRG;
+    private String numCPF;
+    private String senha;
 
-    public PessoaDTO (int id, String nome, String nomeMae, String nomePai, String estatoCivil, String naturalidade, String numCPF, String numTituloEleitor, String numRG) {
+    public PessoaDTO (){}
+    public PessoaDTO (int id, String nome, String nomeMae, String nomePai, String estatoCivil, String naturalidade, String numTituloEleitor, String numRG, String numCPF, String senha) {
         this.id = id;
         this.nome = nome;
         this.nomeMae = nomeMae;
         this.nomePai = nomePai;
         this.estatoCivil = estatoCivil;
         this.naturalidade = naturalidade;
-        this.numCPF = numCPF;
         this.numTituloEleitor = numTituloEleitor;
         this.numRG = numRG;
+        this.numCPF = numCPF;
+        this.senha = senha;
     }
 
-    public PessoaDTO (String nome, String nomeMae, String nomePai, String estatoCivil, String naturalidade, String numCPF, String numTituloEleitor, String numRG) {
+    public PessoaDTO (String nome, String nomeMae, String nomePai, String estatoCivil, String naturalidade, String numTituloEleitor, String numRG, String numCPF, String senha) {
         this.nome = nome;
         this.nomeMae = nomeMae;
         this.nomePai = nomePai;
         this.estatoCivil = estatoCivil;
         this.naturalidade = naturalidade;
-        this.numCPF = numCPF;
         this.numTituloEleitor = numTituloEleitor;
         this.numRG = numRG;
+        this.numCPF = numCPF;
+        this.senha = senha;
+    }
+
+    public String getSenha () {
+        return senha;
     }
 
     public int getId () {

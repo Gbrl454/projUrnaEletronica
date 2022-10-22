@@ -9,6 +9,9 @@ public class PartidoDTO {
     private String sigla;
     private ArrayList<CandidatoDTO> candidatos;
 
+    public PartidoDTO () {
+    }
+
     public PartidoDTO (int id, String nome, int numero, String sigla) {
         this.id = id;
         this.nome = nome;

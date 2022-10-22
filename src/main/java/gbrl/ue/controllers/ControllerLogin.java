@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class ControllerLogin extends PessoaDAO implements DadosVariaveis {
+public class ControllerLogin implements DadosVariaveis {
     public TextField tfUser, tfSenha;
     public Button btnLogar, btnCadastrar, btnRecuperarSenha;
 

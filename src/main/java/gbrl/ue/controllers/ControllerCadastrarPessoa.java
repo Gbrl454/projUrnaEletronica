@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 
 import java.util.Objects;
 
-public class ControllerCadastrarPessoa extends PessoaDAO implements DadosVariaveis {
+public class ControllerCadastrarPessoa implements DadosVariaveis {
     private final String cbEmptyP = "--- Selecione ---";
     private final String cbEmptyV = "";
     public TextField tfNome, tfNomeMae, tfNomePai, tfRG, tfCPF, tfTituloEleitor;
@@ -103,7 +103,7 @@ public class ControllerCadastrarPessoa extends PessoaDAO implements DadosVariave
             }
 
             PessoaDTO pessoa = new PessoaDTO(nome, nomeMae, nomePai, estatoCivil, naturalidade, numRG, numCPF, numTituloEleitor);
-            return addPessoa(pessoa);
+            return PessoaDAO.addPessoa(pessoa);
         } else {
             return false;
         }
