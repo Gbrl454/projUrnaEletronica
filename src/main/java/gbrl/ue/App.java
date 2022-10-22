@@ -31,7 +31,6 @@ public class App extends Application {
                 stage.setScene(scUrnaEletronica);
                 notfifyListeners("scUrnaEletronica", userData);
             }
-
         }
     }
 
@@ -43,11 +42,12 @@ public class App extends Application {
         launch();
     }
 
-    public static void addOnChegeScreenListener (OnChangeScreen newListener) {
+    public static void addOnChageScreenListener (OnChangeScreen newListener) {
         listeners.add(newListener);
     }
 
     private static void notfifyListeners (String newScreen, Object userData) {
+        stage.setFullScreen(true);
         for (OnChangeScreen l : listeners) {
             l.onScreenChanged(newScreen, userData);
         }
@@ -57,10 +57,12 @@ public class App extends Application {
     public void start (Stage stageS) throws IOException {
         stage = stageS;
 
-        int H = 18 * 64;
-        int W = 11 * 64;
+        double H = 17.5 * 64;
+        double W = 10.5 * 64;
 
+        stage.setFullScreen(true);
         stageS.resizableProperty().setValue(Boolean.FALSE);
+        stage.setFullScreenExitHint("");
 
         FXMLLoader fxmlLogin = new FXMLLoader(App.class.getResource("vwLogin.fxml"));
         scLogin = new Scene(fxmlLogin.load(), H, W);

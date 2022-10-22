@@ -7,19 +7,22 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class ControllerLogin implements DadosVariaveis {
+public class ControllerLogin extends DadosVariaveis {
     public TextField tfUser, tfSenha;
     public Button btnLogar, btnCadastrar, btnRecuperarSenha;
 
     @FXML
     protected void initialize () {
-        App.addOnChegeScreenListener((newScreen, userData) -> {
+        App.addOnChageScreenListener((newScreen, userData) -> {
             //Acontecer quando trocar de tela
         });
     }
 
     public void btnLogar () {
-        App.changeScreen("scUrnaEletronica");
+        PESSOA_DTO_LOG = PessoaDAO.autPessoa(tfUser.getText(), tfSenha.getText());
+        if (PESSOA_DTO_LOG != null) {
+            App.changeScreen("scUrnaEletronica");
+        }
     }
 
     public void btnCadastrar () {

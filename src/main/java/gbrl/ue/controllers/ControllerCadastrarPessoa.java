@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 
 import java.util.Objects;
 
-public class ControllerCadastrarPessoa implements DadosVariaveis {
+public class ControllerCadastrarPessoa extends DadosVariaveis {
     private final String cbEmptyP = "--- Selecione ---";
     private final String cbEmptyV = "";
     public TextField tfNome, tfNomeMae, tfNomePai, tfRG, tfCPF, tfTituloEleitor, tfSenha, tfSenhaConf;
@@ -24,7 +24,7 @@ public class ControllerCadastrarPessoa implements DadosVariaveis {
 
     @FXML
     protected void initialize () {
-        App.addOnChegeScreenListener((newScreen, userData) -> {
+        App.addOnChageScreenListener((newScreen, userData) -> {
             //Acontecer quando trocar de tela
             limpar();
             antePag = (String) userData;

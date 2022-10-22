@@ -1,13 +1,16 @@
 package gbrl.ue;
 
+import gbrl.ue.database.dto.PessoaDTO;
+
 import java.util.ArrayList;
 
-public interface DadosVariaveis {
+public abstract class DadosVariaveis {
 
-    String USER_ADMIN = "AdminJus";
-    String SENHA_ADMIN = "159357";
+   public String USER_ADMIN = "AdminJus";
+    public  String SENHA_ADMIN = "159357";
+    public PessoaDTO PESSOA_DTO_LOG;
 
-    default ArrayList<String> getListEstatoCivil () {
+    public ArrayList<String> getListEstatoCivil () {
         ArrayList<String> list = new ArrayList<>();
         list.add("Solteiro (a)");
         list.add("Casado (a)");
@@ -16,7 +19,7 @@ public interface DadosVariaveis {
         return list;
     }
 
-    default ArrayList<String> getListNaturalidade () {
+    public ArrayList<String> getListNaturalidade () {
         ArrayList<String> list = new ArrayList<>();
         list.add("Acre (AC)");
         list.add("Alagoas (AL)");

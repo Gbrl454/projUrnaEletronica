@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 public class ControllerVwUrnaEletronica {
     @FXML
     protected void initialize() {
-        App.addOnChegeScreenListener((newScreen, userData) -> {
+        App.addOnChageScreenListener((newScreen, userData) -> {
             //Acontecer quando trocar de tela
         });
     }

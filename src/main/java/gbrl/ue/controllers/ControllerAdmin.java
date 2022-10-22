@@ -25,7 +25,7 @@ public class ControllerAdmin {
 
     @FXML
     protected void initialize () {
-        App.addOnChegeScreenListener((newScreen, userData) -> {
+        App.addOnChageScreenListener((newScreen, userData) -> {
             //Acontecer quando trocar de tela
             carregarListaPessoas();
         });
