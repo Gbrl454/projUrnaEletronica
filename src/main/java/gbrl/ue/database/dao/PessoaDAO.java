@@ -34,9 +34,9 @@ public class PessoaDAO implements InfoDB {
             pStm.setString(3, pessoa.getNomePai());
             pStm.setString(4, pessoa.getEstatoCivil());
             pStm.setString(5, pessoa.getNaturalidade());
-            pStm.setLong(6, pessoa.getNumRG());
-            pStm.setLong(7, pessoa.getNumCPF());
-            pStm.setLong(8, pessoa.getNumTituloEleitor());
+            pStm.setString(6, pessoa.getNumRG());
+            pStm.setString(7, pessoa.getNumCPF());
+            pStm.setString(8, pessoa.getNumTituloEleitor());
 
             pStm.execute();
             pStm.close();
@@ -67,9 +67,9 @@ public class PessoaDAO implements InfoDB {
                         resSet.getString("nomePai"),
                         resSet.getString("estatoCivil"),
                         resSet.getString("naturalidade"),
-                        resSet.getLong("numRG"),
-                        resSet.getLong("numCPF"),
-                        resSet.getLong("numTituloEleitor"));
+                        resSet.getString("numRG"),
+                        resSet.getString("numCPF"),
+                        resSet.getString("numTituloEleitor"));
 
                 list.add(pessoaDTO);
             }

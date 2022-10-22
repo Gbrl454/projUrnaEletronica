@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public interface InfoDB {
-
     PullDB p = new PullDB();
 
     String IP = p.getIP();

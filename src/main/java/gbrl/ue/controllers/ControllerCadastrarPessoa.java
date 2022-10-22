@@ -2,7 +2,6 @@ package gbrl.ue.controllers;
 
 import gbrl.ue.App;
 import gbrl.ue.DadosVariaveis;
-import gbrl.ue.database.InfoDB;
 import gbrl.ue.database.dao.PessoaDAO;
 import gbrl.ue.database.dto.PessoaDTO;
 import javafx.fxml.FXML;
@@ -86,19 +85,10 @@ public class ControllerCadastrarPessoa extends PessoaDAO implements DadosVariave
             String nome = tfNome.getText();
             String nomeMae = tfNomeMae.getText();
             String nomePai = tfNomePai.getText();
+            String numRG = tfRG.getText();
+            String numCPF = tfCPF.getText();
+            String numTituloEleitor = tfTituloEleitor.getText();
             String estatoCivil, naturalidade;
-
-            long numRG = 0, numCPF = 0, numTituloEleitor = 0;
-
-            if (isRGInput) {
-                numRG = Long.parseLong(tfRG.getText());
-            }
-            if (isCPFInput) {
-                numCPF = Long.parseLong(tfCPF.getText());
-            }
-            if (isTituloEleitorInput) {
-                numTituloEleitor = Long.parseLong(tfTituloEleitor.getText());
-            }
 
             if (!Objects.equals(cbEstatoCivil.getValue(), cbEmptyP)) {
                 estatoCivil = cbEstatoCivil.getValue();
