@@ -3,7 +3,6 @@ package gbrl.ue.database.dao;
 import gbrl.ue.database.ConexaoDAO;
 import gbrl.ue.database.InfoDB;
 import gbrl.ue.database.dto.PartidoDTO;
-import gbrl.ue.database.dto.PessoaDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -97,37 +96,46 @@ public class PartidoDAO implements InfoDB {
 
     // Pesquisar
     public static AbstractCollection<PartidoDTO> shrPartido (String sh) {
-        partidoShr = new HashSet<>();
-        sh = sh.toLowerCase();
-        if (sh.isEmpty()) {
-            return listPartidos();
-        } else {
-            for (PartidoDTO partido : listPartidos()) {
-                if (partido.getNome().toLowerCase().contains(sh) ||
-                        String.valueOf(partido.getNumero()).contains(sh) ||
-                        partido.getSigla().toLowerCase().contains(sh) //||
-                    //partido.getCandidatos().contains(CandidatoDAO.shrCandidato(sh))
-                ) {
-                    partidoShr.add(partido);
-                }
-            }
-        }
-        return partidoShr;
-    }
+        list = new ArrayList<>();
 
-    public static PartidoDTO getPartido(int id){
-        String sql = "SELECT * FROM "+PARTIDOStb+" WHERE pa_id = "+id+"";
+        String sql = "SELECT * FROM " + PARTIDOStb + " p WHERE upper(p.pa_nome) LIKE upper('%" + sh + "%') p.pa_numero LIKE '%" + sh + "%' upper(p.pa_sigla) LIKE upper('%" + sh + "%') ORDER BY pa_nome ASC";
 
         conn = new ConexaoDAO().conDB();
 
         try {
             pStm = conn.prepareStatement(sql);
             resSet = pStm.executeQuery();
-                return new PartidoDTO(
+
+            while (resSet.next()) {
+                PartidoDTO partidoDTO = new PartidoDTO(
                         resSet.getInt("pa_id"),
                         resSet.getString("pa_nome"),
                         resSet.getInt("pa_numero"),
                         resSet.getString("pa_sigla"));
+
+                list.add(partidoDTO);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return list;
+    }
+
+    public static PartidoDTO getPartido (int id) {
+        String sql = "SELECT * FROM " + PARTIDOStb + " WHERE pa_id = " + id + "";
+
+        conn = new ConexaoDAO().conDB();
+
+        try {
+            pStm = conn.prepareStatement(sql);
+            resSet = pStm.executeQuery();
+            return new PartidoDTO(
+                    resSet.getInt("pa_id"),
+                    resSet.getString("pa_nome"),
+                    resSet.getInt("pa_numero"),
+                    resSet.getString("pa_sigla"));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

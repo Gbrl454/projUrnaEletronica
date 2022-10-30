@@ -107,30 +107,40 @@ public class PessoaDAO implements InfoDB {
 
     // Pesquisar
     public static AbstractCollection<PessoaDTO> shrPessoa (String sh) {
-        pessoaShr = new HashSet<>();
-        sh = sh.toLowerCase();
-        if (sh.isEmpty()) {
-            return listPessoas();
-        } else {
-            for (PessoaDTO pessoa : listPessoas()) {
-                if (pessoa.getNomeMae().toLowerCase().contains(sh) ||
-                        pessoa.getNomePai().toLowerCase().contains(sh) ||
-                        pessoa.getEstatoCivil().toLowerCase().contains(sh) ||
-                        pessoa.getNaturalidade().toLowerCase().contains(sh) ||
-                        pessoa.getNumTituloEleitor().toLowerCase().contains(sh) ||
-                        pessoa.getNumRG().toLowerCase().contains(sh) ||
-                        pessoa.getNumCPF().toLowerCase().contains(sh)
-                ) {
-                    pessoaShr.add(pessoa);
-                }
+        list = new ArrayList<>();
+
+        String sql = "SELECT * FROM " + PESSOAStb + " p WHERE upper(p.pe_nome) LIKE upper('%" + sh + "%') OR upper(p.pe_nomeMae) LIKE upper('%" + sh + "%') OR upper(p.pe_nomePai) LIKE upper('%" + sh + "%') OR upper(p.pe_estatoCivil) LIKE upper('%" + sh + "%') OR upper(p.pe_naturalidade) LIKE upper('%" + sh + "%') OR p.pe_numRG LIKE '%" + sh + "%' OR p.pe_numCPF LIKE '%" + sh + "%' OR p.pe_numTituloEleitor LIKE '%" + sh + "%' ORDER BY pe_nome ASC";
+
+        conn = new ConexaoDAO().conDB();
+
+        try {
+            pStm = conn.prepareStatement(sql);
+            resSet = pStm.executeQuery();
+
+            while (resSet.next()) {
+                PessoaDTO pessoaDTO = new PessoaDTO(
+                        resSet.getInt("pe_id"),
+                        resSet.getString("pe_nome"),
+                        resSet.getString("pe_nomeMae"),
+                        resSet.getString("pe_nomePai"),
+                        resSet.getString("pe_estatoCivil"),
+                        resSet.getString("pe_naturalidade"),
+                        resSet.getString("pe_numRG"),
+                        resSet.getString("pe_numCPF"),
+                        resSet.getString("pe_numTituloEleitor"),
+                        resSet.getString("pe_senha"));
+
+                list.add(pessoaDTO);
             }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-        return pessoaShr;
+        return list;
     }
 
     public static PessoaDTO getPessoa (int id) {
         String sql = "SELECT * FROM " + PESSOAStb + " WHERE pe_id = " + id + "";
-        //System.out.println(sql);
 
         conn = new ConexaoDAO().conDB();
 
@@ -188,7 +198,7 @@ public class PessoaDAO implements InfoDB {
 
     // Excluir
     public static boolean delPessoa (int idPessoa) {
-        String sql = "DELETE FROM " + PESSOAStb + " WHERE pe_id = " + idPessoa + "";
+        String sql = "DELETE FROM " + PESSOAStb + " WHERE pe_id = " + idPessoa;
 
         conn = new ConexaoDAO().conDB();
 

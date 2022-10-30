@@ -102,32 +102,56 @@ public class CandidatoDAO implements InfoDB {
 
     // Pesquisar
     public static AbstractCollection<CandidatoDTO> shrCandidato (String sh) {
-        candidatoShr = new HashSet<>();
-        sh = sh.toLowerCase();
-        if (sh.isEmpty()) {
-            return listCandidatos();
-        } else {
-            for (CandidatoDTO candidato : listCandidatos()) {
-                if (candidato.getPessoa().getNomeMae().toLowerCase().contains(sh) ||
-                        candidato.getPessoa().getNomePai().toLowerCase().contains(sh) ||
-                        candidato.getPessoa().getEstatoCivil().toLowerCase().contains(sh) ||
-                        candidato.getPessoa().getNaturalidade().toLowerCase().contains(sh) ||
-                        candidato.getPessoa().getNumTituloEleitor().toLowerCase().contains(sh) ||
-                        candidato.getPessoa().getNumRG().toLowerCase().contains(sh) ||
-                        candidato.getPessoa().getNumCPF().toLowerCase().contains(sh) ||
-                        candidato.getPartido().getNome().toLowerCase().contains(sh) ||
-                        String.valueOf(candidato.getPartido().getNumero()).contains(sh) ||
-                        candidato.getPartido().getSigla().toLowerCase().contains(sh) ||
-                        candidato.getNome().toLowerCase().contains(sh) ||
-                        candidato.getCargoAtual().toLowerCase().contains(sh) ||
-                        candidato.getCargoPleito().toLowerCase().contains(sh) ||
-                        String.valueOf(candidato.getNumero()).contains(sh)
-                ) {
-                    candidatoShr.add(candidato);
-                }
+        list = new ArrayList<>();
+
+        String sql = "SELECT * FROM " + CANDIDATOStb + " c WHERE upper(ca_nome) LIKE upper('%" + sh + "%') OR upper(ca_cargoAtual) LIKE upper('%" + sh + "%') OR upper(ca_cargoPleito) LIKE upper('%" + sh + "%') OR ca_numero LIKE '%" + sh + "%' ORDER BY ca_nome ASC";
+
+        conn = new ConexaoDAO().conDB();
+
+        try {
+            pStm = conn.prepareStatement(sql);
+            resSet = pStm.executeQuery();
+
+            while (resSet.next()) {
+                CandidatoDTO candidatoDTO = new CandidatoDTO(
+                        resSet.getInt("ca_id"),
+                        resSet.getInt("pe_id"),
+                        resSet.getInt("pa_id"),
+                        resSet.getString("ca_nome"),
+                        resSet.getString("ca_cargoAtual"),
+                        resSet.getString("ca_cargoPleito"),
+                        resSet.getInt("ca_numero"));
+
+                list.add(candidatoDTO);
             }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-        return candidatoShr;
+
+        return list;
+    }
+
+    public static CandidatoDTO getCandidato (int id) {
+        String sql = "SELECT * FROM " + CANDIDATOStb + " WHERE ca_id = " + id + "";
+
+        conn = new ConexaoDAO().conDB();
+
+        try {
+            pStm = conn.prepareStatement(sql);
+            resSet = pStm.executeQuery();
+            return new CandidatoDTO(
+                    resSet.getInt("ca_id"),
+                    resSet.getInt("pe_id"),
+                    resSet.getInt("pa_id"),
+                    resSet.getString("ca_nome"),
+                    resSet.getString("ca_cargoAtual"),
+                    resSet.getString("ca_cargoPleito"),
+                    resSet.getInt("ca_numero"));
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
 }
