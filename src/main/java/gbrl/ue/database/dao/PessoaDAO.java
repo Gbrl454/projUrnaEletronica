@@ -2,7 +2,6 @@ package gbrl.ue.database.dao;
 
 import gbrl.ue.database.ConexaoDAO;
 import gbrl.ue.database.InfoDB;
-import gbrl.ue.database.dto.PartidoDTO;
 import gbrl.ue.database.dto.PessoaDTO;
 
 import java.sql.Connection;
@@ -103,7 +102,6 @@ public class PessoaDAO implements InfoDB {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
         return list;
     }
 
@@ -130,25 +128,28 @@ public class PessoaDAO implements InfoDB {
         return pessoaShr;
     }
 
-    public static PessoaDTO getPessoa(int id){
-        String sql = "SELECT * FROM "+PESSOAStb+" WHERE pe_id = "+id+"";
+    public static PessoaDTO getPessoa (int id) {
+        String sql = "SELECT * FROM " + PESSOAStb + " WHERE pe_id = " + id + "";
+        //System.out.println(sql);
 
         conn = new ConexaoDAO().conDB();
 
         try {
             pStm = conn.prepareStatement(sql);
             resSet = pStm.executeQuery();
-            return new PessoaDTO(
-                    resSet.getInt("pe_id"),
-                    resSet.getString("pe_nome"),
-                    resSet.getString("pe_nomeMae"),
-                    resSet.getString("pe_nomePai"),
-                    resSet.getString("pe_estatoCivil"),
-                    resSet.getString("pe_naturalidade"),
-                    resSet.getString("pe_numRG"),
-                    resSet.getString("pe_numCPF"),
-                    resSet.getString("pe_numTituloEleitor"),
-                    resSet.getString("pe_senha"));
+            while (resSet.next()) {
+                return new PessoaDTO(
+                        resSet.getInt("pe_id"),
+                        resSet.getString("pe_nome"),
+                        resSet.getString("pe_nomeMae"),
+                        resSet.getString("pe_nomePai"),
+                        resSet.getString("pe_estatoCivil"),
+                        resSet.getString("pe_naturalidade"),
+                        resSet.getString("pe_numRG"),
+                        resSet.getString("pe_numCPF"),
+                        resSet.getString("pe_numTituloEleitor"),
+                        resSet.getString("pe_senha"));
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -185,5 +186,21 @@ public class PessoaDAO implements InfoDB {
         return null;
     }
 
+    // Excluir
+    public static boolean delPessoa (int idPessoa) {
+        String sql = "DELETE FROM " + PESSOAStb + " WHERE pe_id = " + idPessoa + "";
+
+        conn = new ConexaoDAO().conDB();
+
+        try {
+            pStm = conn.prepareStatement(sql);
+            pStm.execute();
+            pStm.close();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 }
 

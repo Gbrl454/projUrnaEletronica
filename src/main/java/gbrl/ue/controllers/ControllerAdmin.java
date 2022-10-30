@@ -1,9 +1,8 @@
 package gbrl.ue.controllers;
 
 import gbrl.ue.App;
-import gbrl.ue.database.dao.PartidoDAO;
+import gbrl.ue.DadosVariaveis;
 import gbrl.ue.database.dao.PessoaDAO;
-import gbrl.ue.database.dto.PartidoDTO;
 import gbrl.ue.database.dto.PessoaDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,31 +13,42 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class ControllerAdmin {
+public class ControllerAdmin extends DadosVariaveis {
     public TextField tfPesquisarPessoas;
-    public Button btnPesquisarPessoas, btnCadastrarPessoas;
+    public Button btnPesquisarPessoas, btnCadastrarPessoas, btnVisualizarPessoa, btnEditarPessoa, btnDeletarPessoa;
     public ListView<PessoaDTO> lvPessoas;
-
-    public TextField tfPesquisarPartidos;
-    public Button btnPesquisarPartidos, btnCadastrarPartidos;
-    public ListView<PartidoDTO> lvPartidos;
+    private int idPessoaSelc = 0;
 
     @FXML
     protected void initialize () {
         App.addOnChageScreenListener((newScreen, userData) -> {
             //Acontecer quando trocar de tela
-            carregarListaPessoas();
+            System.out.println(idPessoaSelc);
+            reload();
         });
-        carregarListaPessoas();
-        carregarListaPartidos();
     }
 
-    public void alertError (String title, String header, String txt) {
-        Alert alertError = new Alert(AlertType.ERROR);
-        alertError.setTitle(title);
-        alertError.setHeaderText(header);
-        alertError.setContentText(txt);
-        alertError.show();
+    public void reload () {
+        carregarListas();
+        lvPessoas.getSelectionModel().clearSelection();
+        btnVisualizarPessoa.setDisable(true);
+        btnEditarPessoa.setDisable(true);
+        btnDeletarPessoa.setDisable(true);
+        idPessoaSelc = 0;
+    }
+
+    private void carregarListas () {
+        carregarListaPessoas();
+        //carregarListaPartidos();
+        //carregarListaCandidatos();
+    }
+
+    private void alert (String title, String header, String text, AlertType alertType) {
+        Alert aE = new Alert(alertType);
+        aE.setTitle(title);
+        aE.setHeaderText(header);
+        aE.setContentText(text);
+        aE.show();
     }
 
     // CADASTRAR PESSOAS
@@ -55,7 +65,7 @@ public class ControllerAdmin {
         pesquisarPessoas();
         if (!tfPesquisarPessoas.getText().isEmpty()) {
             if (PessoaDAO.pessoaShr.isEmpty()) {
-                alertError("Pesquisa", null, "Pessoa pesquisada não encontrada");
+                alert("Pesquisa", null, "Pessoa pesquisada não encontrada", AlertType.ERROR);
             }
         }
     }
@@ -70,46 +80,31 @@ public class ControllerAdmin {
         lvPessoas.setItems(obsPessoa);
     }
 
+    // GERENCIAR PESSOAS
     public void slcOpcLvPessoas () {
         if (lvPessoas.getSelectionModel().getSelectedItem() != null) {
-            int idSelc = lvPessoas.getSelectionModel().getSelectedItem().getId();
-            System.out.println(idSelc);
+            idPessoaSelc = lvPessoas.getSelectionModel().getSelectedItem().getId();
+            btnVisualizarPessoa.setDisable(false);
+            btnEditarPessoa.setDisable(false);
+            btnDeletarPessoa.setDisable(false);
+            System.out.println(idPessoaSelc);
         }
     }
 
-    // CADASTRAR PARTIDOS
-    public void btnCadastrarPartidos () {
-        App.changeScreen("scCadastrarPartido");
+    public void btnVisualizarPessoa () {
+        System.out.println("Página que vê as informações da pessoa");
     }
 
-    // PESQUISAR PARTIDOS
-    public void pesquisarPartidos () {
-        carregarListaPartidos();
+    public void btnEditarPessoa () {
+        System.out.println("Página que consegue editar as informações da pessoa");
     }
 
-    public void btnPesquisarPartidos () {
-        pesquisarPartidos();
-        if (!tfPesquisarPartidos.getText().isEmpty()) {
-            if (PartidoDAO.partidoShr.isEmpty()) {
-                alertError("Pesquisa", null, "Partido pesquisado não encontrado");
+    public void btnDeletarPessoa () {
+        if (idPessoaSelc != 0) {
+            if (PessoaDAO.delPessoa(idPessoaSelc)) {
+                //System.out.println("PESSOA REMOVIDA");
+                carregarListas();
             }
-        }
-    }
-
-    public void carregarListaPartidos () {
-        ObservableList<PartidoDTO> obsPartido;
-        if (PartidoDAO.shrPartido(tfPesquisarPartidos.getText()).isEmpty()) {
-            obsPartido = FXCollections.observableArrayList(PartidoDAO.listPartidos());
-        } else {
-            obsPartido = FXCollections.observableArrayList(PartidoDAO.shrPartido(tfPesquisarPartidos.getText().toLowerCase()));
-        }
-        lvPartidos.setItems(obsPartido);
-    }
-
-    public void slcOpcLvPartidos () {
-        if (lvPartidos.getSelectionModel().getSelectedItem() != null) {
-            int idSelc = lvPartidos.getSelectionModel().getSelectedItem().getId();
-            System.out.println(idSelc);
         }
     }
 

@@ -47,7 +47,7 @@ public class App extends Application {
     }
 
     private static void notfifyListeners (String newScreen, Object userData) {
-        stage.setFullScreen(true);
+        //stage.setFullScreen(true);
         for (OnChangeScreen l : listeners) {
             l.onScreenChanged(newScreen, userData);
         }
@@ -57,10 +57,10 @@ public class App extends Application {
     public void start (Stage stageS) throws IOException {
         stage = stageS;
 
-        double H = 17.5 * 64;
-        double W = 10.5 * 64;
+        double H = 17.85 * 64;
+        double W = 10.85 * 64;
 
-        stage.setFullScreen(true);
+        //stage.setFullScreen(true);
         stageS.resizableProperty().setValue(Boolean.FALSE);
         stage.setFullScreenExitHint("");
 
