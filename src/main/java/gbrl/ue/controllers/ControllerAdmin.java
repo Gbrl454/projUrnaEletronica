@@ -23,7 +23,6 @@ public class ControllerAdmin extends DadosVariaveis {
     protected void initialize () {
         App.addOnChageScreenListener((newScreen, userData) -> {
             //Acontecer quando trocar de tela
-            System.out.println(idPessoaSelc);
             reload();
         });
     }
@@ -87,22 +86,20 @@ public class ControllerAdmin extends DadosVariaveis {
             btnVisualizarPessoa.setDisable(false);
             btnEditarPessoa.setDisable(false);
             btnDeletarPessoa.setDisable(false);
-            System.out.println(idPessoaSelc);
         }
     }
 
     public void btnVisualizarPessoa () {
-        System.out.println("Página que vê as informações da pessoa");
+        App.changeScreen("scVerPessoa",String.valueOf(idPessoaSelc));
     }
 
     public void btnEditarPessoa () {
-        System.out.println("Página que consegue editar as informações da pessoa");
+        App.changeScreen("scEditarPessoa",String.valueOf(idPessoaSelc));
     }
 
     public void btnDeletarPessoa () {
         if (idPessoaSelc != 0) {
             if (PessoaDAO.delPessoa(idPessoaSelc)) {
-                //System.out.println("PESSOA REMOVIDA");
                 carregarListas();
             }
         }

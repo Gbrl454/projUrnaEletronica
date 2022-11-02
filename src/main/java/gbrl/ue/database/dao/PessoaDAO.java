@@ -91,9 +91,9 @@ public class PessoaDAO implements InfoDB {
                         resSet.getString("pe_nomePai"),
                         resSet.getString("pe_estatoCivil"),
                         resSet.getString("pe_naturalidade"),
+                        resSet.getString("pe_numTituloEleitor"),
                         resSet.getString("pe_numRG"),
                         resSet.getString("pe_numCPF"),
-                        resSet.getString("pe_numTituloEleitor"),
                         resSet.getString("pe_senha"));
 
                 list.add(pessoaDTO);
@@ -125,9 +125,9 @@ public class PessoaDAO implements InfoDB {
                         resSet.getString("pe_nomePai"),
                         resSet.getString("pe_estatoCivil"),
                         resSet.getString("pe_naturalidade"),
+                        resSet.getString("pe_numTituloEleitor"),
                         resSet.getString("pe_numRG"),
                         resSet.getString("pe_numCPF"),
-                        resSet.getString("pe_numTituloEleitor"),
                         resSet.getString("pe_senha"));
 
                 list.add(pessoaDTO);
@@ -155,9 +155,9 @@ public class PessoaDAO implements InfoDB {
                         resSet.getString("pe_nomePai"),
                         resSet.getString("pe_estatoCivil"),
                         resSet.getString("pe_naturalidade"),
+                        resSet.getString("pe_numTituloEleitor"),
                         resSet.getString("pe_numRG"),
                         resSet.getString("pe_numCPF"),
-                        resSet.getString("pe_numTituloEleitor"),
                         resSet.getString("pe_senha"));
             }
         } catch (SQLException e) {
@@ -184,9 +184,9 @@ public class PessoaDAO implements InfoDB {
                         resSet.getString("pe_nomePai"),
                         resSet.getString("pe_estatoCivil"),
                         resSet.getString("pe_naturalidade"),
+                        resSet.getString("pe_numTituloEleitor"),
                         resSet.getString("pe_numRG"),
                         resSet.getString("pe_numCPF"),
-                        resSet.getString("pe_numTituloEleitor"),
                         resSet.getString("pe_senha"));
             }
 
@@ -212,5 +212,32 @@ public class PessoaDAO implements InfoDB {
         }
         return false;
     }
+
+    // Editar
+    public static boolean editarPessoa (PessoaDTO pessoa) {
+        String sql = "UPDATE " + PESSOAStb + " SET pe_nome = '" + pessoa.getNome() +
+                "', pe_nomeMae = '" + pessoa.getNomeMae() +
+                "', pe_nomePai = '" + pessoa.getNomePai() +
+                "', pe_estatoCivil = '" + pessoa.getEstatoCivil() +
+                "', pe_naturalidade = '" + pessoa.getNaturalidade() +
+                "', pe_numRG = " + pessoa.getNumRG() +
+                ", pe_numCPF = " + pessoa.getNumCPF() +
+                ", pe_numTituloEleitor = " + pessoa.getNumTituloEleitor() +
+                " WHERE pe_id = " + pessoa.getId();
+
+        conn = new ConexaoDAO().conDB();
+
+        try {
+            pStm = conn.prepareStatement(sql);
+            pStm.execute();
+            pStm.close();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
 }
 

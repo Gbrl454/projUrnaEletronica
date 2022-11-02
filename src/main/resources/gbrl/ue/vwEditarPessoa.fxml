@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0" style="-fx-background-color: cfccb9;" stylesheets="@css/newPessoa.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gbrl.ue.controllers.ControllerEditarPessoa">
+   <Label fx:id="lbSave" ellipsisString="" textFill="RED" VBox.vgrow="ALWAYS">
+      <font>
+         <Font name="System Bold" size="15.0" />
+      </font>
+      <VBox.margin>
+         <Insets bottom="-30.0" left="-30.0" right="-30.0" top="-30.0" />
+      </VBox.margin>
+   </Label>
+   <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
+      <padding>
+         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+      </padding>
+      <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
+         <Label text="Nome">
+            <font>
+               <Font size="25.0" />
+            </font>
+         </Label>
+         <TextField fx:id="tfNome" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mudou" promptText="Ex.: Augusto de Carvalho Rodrigues dos Anjos">
+            <font>
+               <Font size="25.0" />
+            </font>
+         </TextField>
+      </VBox>
+      <GridPane alignment="CENTER_LEFT" hgap="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" vgap="15.0">
+         <columnConstraints>
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="-Infinity" />
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="-Infinity" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" vgrow="ALWAYS" />
+         </rowConstraints>
+         <VBox.margin>
+            <Insets bottom="15.0" top="15.0" />
+         </VBox.margin>
+         <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <GridPane.margin>
+               <Insets />
+            </GridPane.margin>
+            <Label text="Nome da Mãe">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfNomeMae" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mudou" promptText="Ex.: Elza Gomes da Conceição">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </TextField>
+         </VBox>
+         <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <GridPane.margin>
+               <Insets />
+            </GridPane.margin>
+            <Label text="Nome do Pai">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfNomePai" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mudou" promptText="Ex.: Pedro Paulo Soares Pereira">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </TextField>
+         </VBox>
+         <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <GridPane.margin>
+               <Insets />
+            </GridPane.margin>
+            <Label text="Estado Cívil">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbEstatoCivil" maxHeight="1.7976931348623157E308" maxWidth="500.0" minHeight="-Infinity" minWidth="200.0" onMouseClicked="#mudou" promptText="-- Selecione --" styleClass="cb" visibleRowCount="9" />
+         </HBox>
+         <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <GridPane.margin>
+               <Insets />
+            </GridPane.margin>
+            <Label text="Naturalidade">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbNaturalidade" maxHeight="1.7976931348623157E308" maxWidth="500.0" minHeight="-Infinity" minWidth="200.0" onMouseClicked="#mudou" promptText="-- Selecione --" styleClass="cb" visibleRowCount="9" />
+         </HBox>
+         <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <GridPane.margin>
+               <Insets />
+            </GridPane.margin>
+            <Label text="RG">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfRG" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mudou" promptText="Ex.: 0000000000-0" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </TextField>
+         </HBox>
+         <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <GridPane.margin>
+               <Insets />
+            </GridPane.margin>
+            <Label text="CPF">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfCPF" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Ex.: 000.000.000-00" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </TextField>
+         </HBox>
+      </GridPane>
+      <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
+         <Label text="Título de Eleitor">
+            <font>
+               <Font size="25.0" />
+            </font>
+         </Label>
+         <TextField fx:id="tfTituloEleitor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mudou" promptText="Ex.: 0000 0000 0000">
+            <font>
+               <Font size="25.0" />
+            </font>
+         </TextField>
+      </VBox>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
+         <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
+            <Label text="Senha">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfSenha" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mudou" promptText="Ex.: 123abc" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </TextField>
+         </HBox>
+         <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0">
+            <Label text="Confirmar Senha">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfSenhaConf" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mudou" promptText="Ex.: 123abc" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </TextField>
+         </HBox>
+      </HBox>
+   </VBox>
+   <HBox alignment="CENTER" spacing="50.0">
+      <Button fx:id="btnVoltar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnVoltar" styleClass="btn" text="Voltar">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnSalvar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnSalvar" styleClass="btn" text="Salvar">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+   </HBox>
+    <padding>
+        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+    </padding>
+</VBox>

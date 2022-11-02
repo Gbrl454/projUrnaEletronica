@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class App extends Application {
     private static final ArrayList<OnChangeScreen> listeners = new ArrayList<>();
     private static Stage stage;
-    private static Scene scLogin, scAdmin, scCadastrarPessoa, scUrnaEletronica;
+    private static Scene scLogin, scAdmin, scVerPessoa, scEditarPessoa, scCadastrarPessoa, scUrnaEletronica;
 
     public static void changeScreen (String scene, Object userData) {
         switch (scene) {
@@ -22,6 +22,14 @@ public class App extends Application {
             case "scAdmin" -> {
                 stage.setScene(scAdmin);
                 notfifyListeners("scAdmin", userData);
+            }
+            case "scVerPessoa" -> {
+                stage.setScene(scVerPessoa);
+                notfifyListeners("scVerPessoa", userData);
+            }
+            case "scEditarPessoa" -> {
+                stage.setScene(scEditarPessoa);
+                notfifyListeners("scEditarPessoa", userData);
             }
             case "scCadastrarPessoa" -> {
                 stage.setScene(scCadastrarPessoa);
@@ -47,7 +55,7 @@ public class App extends Application {
     }
 
     private static void notfifyListeners (String newScreen, Object userData) {
-        //stage.setFullScreen(true);
+        stage.setFullScreen(true);
         for (OnChangeScreen l : listeners) {
             l.onScreenChanged(newScreen, userData);
         }
@@ -69,6 +77,12 @@ public class App extends Application {
 
         FXMLLoader fxmlAdmin = new FXMLLoader(App.class.getResource("vwAdmin.fxml"));
         scAdmin = new Scene(fxmlAdmin.load(), H, W);
+
+        FXMLLoader fxmlVerPessoa = new FXMLLoader(App.class.getResource("vwVerPessoa.fxml"));
+        scVerPessoa = new Scene(fxmlVerPessoa.load(), H, W);
+
+        FXMLLoader fxmlEditarPessoa = new FXMLLoader(App.class.getResource("vwEditarPessoa.fxml"));
+        scEditarPessoa = new Scene(fxmlEditarPessoa.load(), H, W);
 
         FXMLLoader fxmlCadastrarPessoa = new FXMLLoader(App.class.getResource("vwCadastrarPessoa.fxml"));
         scCadastrarPessoa = new Scene(fxmlCadastrarPessoa.load(), H, W);

@@ -12,7 +12,9 @@ public class PessoaDTO {
     private String numCPF;
     private String senha;
 
-    public PessoaDTO (){}
+    public PessoaDTO () {
+    }
+
     public PessoaDTO (int id, String nome, String nomeMae, String nomePai, String estatoCivil, String naturalidade, String numTituloEleitor, String numRG, String numCPF, String senha) {
         this.id = id;
         this.nome = nome;
@@ -36,6 +38,21 @@ public class PessoaDTO {
         this.numRG = numRG;
         this.numCPF = numCPF;
         this.senha = senha;
+    }
+
+    public PessoaDTO (String nome, String nomeMae, String nomePai, String estatoCivil, String naturalidade, String numTituloEleitor, String numRG, String numCPF) {
+        this.nome = nome;
+        this.nomeMae = nomeMae;
+        this.nomePai = nomePai;
+        this.estatoCivil = estatoCivil;
+        this.naturalidade = naturalidade;
+        this.numTituloEleitor = numTituloEleitor;
+        this.numRG = numRG;
+        this.numCPF = numCPF;
+    }
+
+    public void setId (int id) {
+        this.id = id;
     }
 
     public String getSenha () {
