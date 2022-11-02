@@ -1,7 +1,7 @@
 {
-    "ip": "localhost",
-    "banco": "urnaeletronica",
-    "usuario": "root",
-    "senha": ""
+  "ip": "urnaeletronica.mysql.uhserver.com",
+  "banco": "urnaeletronica",
+  "usuario": "purnaeletronica",
+  "senha": "Ue55747322p@@"
 }
 
