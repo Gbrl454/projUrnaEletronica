@@ -3,41 +3,43 @@ package gbrl.ue;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class App extends Application {
+public class App extends Application implements Telas{
     private static final ArrayList<OnChangeScreen> listeners = new ArrayList<>();
     private static Stage stage;
     private static Scene scLogin, scAdmin, scVerPessoa, scEditarPessoa, scCadastrarPessoa, scUrnaEletronica;
 
     public static void changeScreen (String scene, Object userData) {
         switch (scene) {
-            case "scLogin" -> {
+            case telaLogin -> {
                 stage.setScene(scLogin);
-                notfifyListeners("scLogin", userData);
+                notfifyListeners(telaLogin, userData);
             }
-            case "scAdmin" -> {
+            case telaAdmin -> {
                 stage.setScene(scAdmin);
-                notfifyListeners("scAdmin", userData);
+                notfifyListeners(telaAdmin, userData);
             }
-            case "scVerPessoa" -> {
+            case telaVerPessoa -> {
                 stage.setScene(scVerPessoa);
-                notfifyListeners("scVerPessoa", userData);
+                notfifyListeners(telaVerPessoa, userData);
             }
-            case "scEditarPessoa" -> {
+            case telaEditarPessoa -> {
                 stage.setScene(scEditarPessoa);
-                notfifyListeners("scEditarPessoa", userData);
+                notfifyListeners(telaEditarPessoa, userData);
             }
-            case "scCadastrarPessoa" -> {
+            case telaCadastrarPessoa -> {
                 stage.setScene(scCadastrarPessoa);
-                notfifyListeners("scCadastrarPessoa", userData);
+                notfifyListeners(telaCadastrarPessoa, userData);
             }
-            case "scUrnaEletronica" -> {
+            case telaUrnaEletronica -> {
                 stage.setScene(scUrnaEletronica);
-                notfifyListeners("scUrnaEletronica", userData);
+                notfifyListeners(telaUrnaEletronica, userData);
             }
         }
     }
@@ -68,6 +70,8 @@ public class App extends Application {
         double H = 17.85 * 64;
         double W = 10.85 * 64;
 
+        stageS.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/gbrl/ue/imgs/Logo.png"))));
+
         //stage.setFullScreen(true);
         stageS.resizableProperty().setValue(Boolean.FALSE);
         stage.setFullScreenExitHint("");
@@ -90,7 +94,7 @@ public class App extends Application {
         FXMLLoader fxmlUrnaEletronica = new FXMLLoader(App.class.getResource("vwUrnaEletronica.fxml"));
         scUrnaEletronica = new Scene(fxmlUrnaEletronica.load(), H, W);
 
-        stageS.setTitle("Justiça Eleitoral");
+        stageS.setTitle("TREU");
         stageS.setScene(scLogin);
         stageS.show();
     }

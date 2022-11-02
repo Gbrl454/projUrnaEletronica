@@ -1,13 +1,18 @@
 package gbrl.ue.controllers;
 
 import gbrl.ue.App;
+import gbrl.ue.DadosVariaveis;
+import gbrl.ue.Telas;
 import gbrl.ue.database.dao.PessoaDAO;
 import gbrl.ue.database.dto.PessoaDTO;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 
-public class ControllerEditarPessoa {
+import java.util.Objects;
+
+public class ControllerEditarPessoa extends DadosVariaveis implements Telas {
+
     public Button btnVoltar, btnSalvar;
     public TextField tfNome, tfNomeMae, tfNomePai, tfRG, tfCPF, tfTituloEleitor, tfSenha, tfSenhaConf;
     public ComboBox<String> cbEstatoCivil;
@@ -19,13 +24,17 @@ public class ControllerEditarPessoa {
     @FXML
     protected void initialize () {
         App.addOnChageScreenListener((newScreen, userData) -> {
-            //Acontecer quando trocar de tela
-            if (userData != null) {
-                idPessoaSelc = Integer.parseInt((String) userData);
-                setValor();
+            if (Objects.equals(newScreen, telaEditarPessoa)) {
+                //Acontecer quando trocar de tela
+                if (userData != null) {
+                    idPessoaSelc = Integer.parseInt((String) userData);
+                    setValor();
+                }
+                //System.out.println(idPessoaSelc);
             }
-            //System.out.println(idPessoaSelc);
         });
+        cbEstatoCivil.getItems().addAll(getListEstatoCivil());
+        cbNaturalidade.getItems().addAll(getListNaturalidade());
     }
 
     private void alert (String title, String header, String text, AlertType alertType) {
@@ -48,8 +57,14 @@ public class ControllerEditarPessoa {
         tfRG.setText(pessoa.getNumRG());
         tfCPF.setText(pessoa.getNumCPF());
         tfTituloEleitor.setText(pessoa.getNumTituloEleitor());
-        cbEstatoCivil.setValue(pessoa.getEstatoCivil());
-        cbNaturalidade.setValue(pessoa.getNaturalidade());
+        if (!Objects.equals(pessoa.getEstatoCivil(), "")) {
+            cbEstatoCivil.setValue(pessoa.getEstatoCivil());
+        }
+        if (!Objects.equals(pessoa.getNaturalidade(), "")) {
+            cbNaturalidade.setValue(pessoa.getNaturalidade());
+        }
+        cbEstatoCivil.setPromptText(cbEmptyP);
+        cbNaturalidade.setPromptText(cbEmptyP);
         tfSenha.clear();
         tfSenhaConf.clear();
         lbSave.setText("Ao continuar as informações editadas não serão salvas. Deseja de fato continuar?");

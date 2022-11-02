@@ -14,7 +14,7 @@
         <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
     </padding>
     <ImageView fitHeight="150.0" fitWidth="200.0" onMouseClicked="#isAdminLogin" pickOnBounds="true" preserveRatio="true">
-        <Image url="@imgs/logoJus.png" />
+        <Image url="@imgs/Marca.png" />
     </ImageView>
     <TextField fx:id="tfUser" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Digite seu Nome / CPF ..." text="adminJus" VBox.vgrow="ALWAYS">
         <font>

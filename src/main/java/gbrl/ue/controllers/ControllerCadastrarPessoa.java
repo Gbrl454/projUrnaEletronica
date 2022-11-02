@@ -2,6 +2,7 @@ package gbrl.ue.controllers;
 
 import gbrl.ue.App;
 import gbrl.ue.DadosVariaveis;
+import gbrl.ue.Telas;
 import gbrl.ue.database.dao.PessoaDAO;
 import gbrl.ue.database.dto.PessoaDTO;
 import javafx.fxml.FXML;
@@ -13,9 +14,7 @@ import javafx.scene.control.TextField;
 
 import java.util.Objects;
 
-public class ControllerCadastrarPessoa extends DadosVariaveis {
-    private final String cbEmptyP = "--- Selecione ---";
-    private final String cbEmptyV = "";
+public class ControllerCadastrarPessoa extends DadosVariaveis implements Telas {
     public TextField tfNome, tfNomeMae, tfNomePai, tfRG, tfCPF, tfTituloEleitor, tfSenha, tfSenhaConf;
     public ComboBox<String> cbEstatoCivil, cbNaturalidade;
     public Button btnCadastrar, btnVoltar;
@@ -25,9 +24,11 @@ public class ControllerCadastrarPessoa extends DadosVariaveis {
     @FXML
     protected void initialize () {
         App.addOnChageScreenListener((newScreen, userData) -> {
-            //Acontecer quando trocar de tela
-            limpar();
-            antePag = (String) userData;
+            if (Objects.equals(newScreen, telaCadastrarPessoa)) {
+                //Acontecer quando trocar de tela
+                limpar();
+                antePag = (String) userData;
+            }
         });
         cbEstatoCivil.getItems().addAll(getListEstatoCivil());
         cbNaturalidade.getItems().addAll(getListNaturalidade());
@@ -87,38 +88,39 @@ public class ControllerCadastrarPessoa extends DadosVariaveis {
     }
 
     private boolean cadastrar () {
-        if (!tfSenha.getText().equals(tfSenhaConf.getText())){
-            alert("Senhas diferentes","","As senhas devem ser iguais",AlertType.ERROR);
+        if (!tfSenha.getText().equals(tfSenhaConf.getText())) {
+            alert("Senhas diferentes", "", "As senhas devem ser iguais", AlertType.ERROR);
             tfSenhaConf.clear();
             return false;
-        }else{
-        if (isCadastravel()) {
-            String nome = tfNome.getText();
-            String nomeMae = tfNomeMae.getText();
-            String nomePai = tfNomePai.getText();
-            String numRG = tfRG.getText();
-            String numCPF = tfCPF.getText();
-            String numTituloEleitor = tfTituloEleitor.getText();
-            String senha = tfSenha.getText();
-            String estatoCivil, naturalidade;
-
-            if (!Objects.equals(cbEstatoCivil.getValue(), cbEmptyP)) {
-                estatoCivil = cbEstatoCivil.getValue();
-            } else {
-                estatoCivil = cbEmptyV;
-            }
-
-            if (!Objects.equals(cbNaturalidade.getValue(), cbEmptyP)) {
-                naturalidade = cbNaturalidade.getValue();
-            } else {
-                naturalidade = cbEmptyV;
-            }
-
-            PessoaDTO pessoa = new PessoaDTO(nome,nomeMae,nomePai,estatoCivil, naturalidade, numTituloEleitor, numRG, numCPF, senha);
-                return PessoaDAO.addPessoa(pessoa);
         } else {
-            return false;
-        }}
+            if (isCadastravel()) {
+                String nome = tfNome.getText();
+                String nomeMae = tfNomeMae.getText();
+                String nomePai = tfNomePai.getText();
+                String numRG = tfRG.getText();
+                String numCPF = tfCPF.getText();
+                String numTituloEleitor = tfTituloEleitor.getText();
+                String senha = tfSenha.getText();
+                String estatoCivil, naturalidade;
+
+                if (!Objects.equals(cbEstatoCivil.getValue(), cbEmptyP)) {
+                    estatoCivil = cbEstatoCivil.getValue();
+                } else {
+                    estatoCivil = cbEmptyV;
+                }
+
+                if (!Objects.equals(cbNaturalidade.getValue(), cbEmptyP)) {
+                    naturalidade = cbNaturalidade.getValue();
+                } else {
+                    naturalidade = cbEmptyV;
+                }
+
+                PessoaDTO pessoa = new PessoaDTO(nome, nomeMae, nomePai, estatoCivil, naturalidade, numTituloEleitor, numRG, numCPF, senha);
+                return PessoaDAO.addPessoa(pessoa);
+            } else {
+                return false;
+            }
+        }
     }
 
     public void btnVoltar () {

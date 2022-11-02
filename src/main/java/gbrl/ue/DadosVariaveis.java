@@ -6,9 +6,12 @@ import java.util.ArrayList;
 
 public abstract class DadosVariaveis {
 
-   public String USER_ADMIN = "AdminJus";
-    public  String SENHA_ADMIN = "159357";
+    public String USER_ADMIN = "AdminJus";
+    public String SENHA_ADMIN = "159357";
     public PessoaDTO PESSOA_DTO_LOG;
+
+    public String cbEmptyP = "--- Selecione ---";
+    public String cbEmptyV = "";
 
     public ArrayList<String> getListEstatoCivil () {
         ArrayList<String> list = new ArrayList<>();
@@ -50,4 +53,5 @@ public abstract class DadosVariaveis {
         list.add("Distrito Federal (DF)");
         return list;
     }
+
 }

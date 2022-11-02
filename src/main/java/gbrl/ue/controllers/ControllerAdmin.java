@@ -2,6 +2,7 @@ package gbrl.ue.controllers;
 
 import gbrl.ue.App;
 import gbrl.ue.DadosVariaveis;
+import gbrl.ue.Telas;
 import gbrl.ue.database.dao.PessoaDAO;
 import gbrl.ue.database.dto.PessoaDTO;
 import javafx.collections.FXCollections;
@@ -13,7 +14,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class ControllerAdmin extends DadosVariaveis {
+import java.util.Objects;
+
+public class ControllerAdmin extends DadosVariaveis implements Telas {
     public TextField tfPesquisarPessoas;
     public Button btnPesquisarPessoas, btnCadastrarPessoas, btnVisualizarPessoa, btnEditarPessoa, btnDeletarPessoa;
     public ListView<PessoaDTO> lvPessoas;
@@ -22,8 +25,10 @@ public class ControllerAdmin extends DadosVariaveis {
     @FXML
     protected void initialize () {
         App.addOnChageScreenListener((newScreen, userData) -> {
-            //Acontecer quando trocar de tela
-            reload();
+            if (Objects.equals(newScreen, telaAdmin)) {
+                //Acontecer quando trocar de tela
+                reload();
+            }
         });
     }
 
@@ -90,11 +95,11 @@ public class ControllerAdmin extends DadosVariaveis {
     }
 
     public void btnVisualizarPessoa () {
-        App.changeScreen("scVerPessoa",String.valueOf(idPessoaSelc));
+        App.changeScreen("scVerPessoa", String.valueOf(idPessoaSelc));
     }
 
     public void btnEditarPessoa () {
-        App.changeScreen("scEditarPessoa",String.valueOf(idPessoaSelc));
+        App.changeScreen("scEditarPessoa", String.valueOf(idPessoaSelc));
     }
 
     public void btnDeletarPessoa () {

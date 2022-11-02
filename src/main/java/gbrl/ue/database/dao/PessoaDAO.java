@@ -3,6 +3,8 @@ package gbrl.ue.database.dao;
 import gbrl.ue.database.ConexaoDAO;
 import gbrl.ue.database.InfoDB;
 import gbrl.ue.database.dto.PessoaDTO;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,6 +21,25 @@ public class PessoaDAO implements InfoDB {
     static Connection conn = null;
     static PreparedStatement pStm = null;
     static ResultSet resSet = null;
+
+    private static void alert (String header, String text) {
+        Alert aE = new Alert(AlertType.ERROR);
+        aE.setTitle("Erro");
+        aE.setHeaderText(header);
+        aE.setContentText(text);
+        aE.show();
+    }
+
+    private static void Close () {
+        try {
+            pStm.close();
+            conn.close();
+        } catch (SQLException e) {
+            alert("Close", e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+    }
 
     // Cadastrar
     public static boolean cpfCadastrado (String cpf) {
@@ -38,7 +59,10 @@ public class PessoaDAO implements InfoDB {
             }
 
         } catch (SQLException e) {
+            alert("cpfCadastrado", e.getMessage());
             System.out.println(e.getMessage());
+        } finally {
+            Close();
         }
 
         return !(pessoas.size() == 0);
@@ -63,11 +87,13 @@ public class PessoaDAO implements InfoDB {
             pStm.setString(9, pessoa.getSenha());
 
             pStm.execute();
-            pStm.close();
             return true;
         } catch (SQLException e) {
+            alert("addPessoa", e.getMessage());
             System.out.println(e.getMessage());
             return false;
+        } finally {
+            Close();
         }
     }
 
@@ -98,9 +124,11 @@ public class PessoaDAO implements InfoDB {
 
                 list.add(pessoaDTO);
             }
-
         } catch (SQLException e) {
+            alert("listPessoas", e.getMessage());
             System.out.println(e.getMessage());
+        } finally {
+            Close();
         }
         return list;
     }
@@ -132,9 +160,11 @@ public class PessoaDAO implements InfoDB {
 
                 list.add(pessoaDTO);
             }
-
         } catch (SQLException e) {
+            alert("shrPessoa", e.getMessage());
             System.out.println(e.getMessage());
+        } finally {
+            Close();
         }
         return list;
     }
@@ -161,7 +191,10 @@ public class PessoaDAO implements InfoDB {
                         resSet.getString("pe_senha"));
             }
         } catch (SQLException e) {
+            alert("getPessoa", e.getMessage());
             System.out.println(e.getMessage());
+        } finally {
+            Close();
         }
         return null;
     }
@@ -191,7 +224,10 @@ public class PessoaDAO implements InfoDB {
             }
 
         } catch (SQLException e) {
+            alert("autPessoa", e.getMessage());
             System.out.println(e.getMessage());
+        } finally {
+            Close();
         }
         return null;
     }
@@ -205,10 +241,12 @@ public class PessoaDAO implements InfoDB {
         try {
             pStm = conn.prepareStatement(sql);
             pStm.execute();
-            pStm.close();
             return true;
         } catch (SQLException e) {
+            alert("delPessoa", e.getMessage());
             System.out.println(e.getMessage());
+        } finally {
+            Close();
         }
         return false;
     }
@@ -230,12 +268,13 @@ public class PessoaDAO implements InfoDB {
         try {
             pStm = conn.prepareStatement(sql);
             pStm.execute();
-            pStm.close();
-            conn.close();
             return true;
         } catch (SQLException e) {
+            alert("editarPessoa", e.getMessage());
             System.out.println(e.getMessage());
             return false;
+        } finally {
+            Close();
         }
     }
 

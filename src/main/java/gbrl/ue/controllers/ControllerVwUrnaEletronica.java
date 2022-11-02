@@ -1,17 +1,22 @@
 package gbrl.ue.controllers;
 
 import gbrl.ue.App;
+import gbrl.ue.Telas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-public class ControllerVwUrnaEletronica {
+import java.util.Objects;
+
+public class ControllerVwUrnaEletronica implements Telas {
     @FXML
     protected void initialize() {
         App.addOnChageScreenListener((newScreen, userData) -> {
-            //Acontecer quando trocar de tela
+            if (Objects.equals(newScreen, telaUrnaEletronica)) {
+                //Acontecer quando trocar de tela
+            }
         });
     }
 

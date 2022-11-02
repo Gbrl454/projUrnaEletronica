@@ -1,6 +1,7 @@
 package gbrl.ue.controllers;
 
 import gbrl.ue.App;
+import gbrl.ue.Telas;
 import gbrl.ue.database.dao.PessoaDAO;
 import gbrl.ue.database.dto.PessoaDTO;
 import javafx.fxml.FXML;
@@ -8,7 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class ControllerVerPessoa {
+import java.util.Objects;
+
+public class ControllerVerPessoa implements Telas {
     public Button btnVoltar, btnEditar;
     public TextField tfNome, tfNomeMae, tfNomePai, tfRG, tfCPF, tfTituloEleitor;
     public ComboBox<String> cbEstatoCivil;
@@ -18,12 +21,14 @@ public class ControllerVerPessoa {
     @FXML
     protected void initialize () {
         App.addOnChageScreenListener((newScreen, userData) -> {
-            //Acontecer quando trocar de tela
-            if (userData != null) {
-                idPessoaSelc = Integer.parseInt((String) userData);
-                setValor();
+            if (Objects.equals(newScreen, telaVerPessoa)) {
+                //Acontecer quando trocar de tela
+                if (userData != null) {
+                    idPessoaSelc = Integer.parseInt((String) userData);
+                    setValor();
+                }
+                //System.out.println(idPessoaSelc);
             }
-            //System.out.println(idPessoaSelc);
         });
 
     }
